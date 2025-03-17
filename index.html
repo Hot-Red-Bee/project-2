@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" src="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" src="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" src="/favicon-16x16.png">
+    <link rel="manifest" src="/site.webmanifest">
+    <title>KeySprint</title>
+</head>
+<body>
+<header>
+    <h1>KeySprint</h1>
+</header>
+<section>
+    <p>KeySprint is a typing test that allows you to test your typing speed and accuracy. You can also compete with your friends and see who is the fastest typer.</p>
+    <button id="gameButton" >Start Game</button>
+</section>
+<section id="gameSection" style="display: none;">
+    <h2>Typing Test</h2>
+    <p id="quote">"The quick brown fox jumps over the lazy dog"</p>
+    <input type="text" id="input" placeholder="Start typing...">
+
+    <p id="timer">Time: 0s</p>
+    <p id="result"></p>
+    <button id="resetButton">Reset</button>
+    <br>
+    <br>
+    <button id ="stopGame" onclick="stopGame()" >Stop Game</button>
+    <button id="shareButton">Share</button>
+</section>
+
+<footer>&reg;2025 Ks </footer>
+    <script src="script.js"></script> 
+</body>
+</html>
