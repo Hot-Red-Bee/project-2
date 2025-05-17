@@ -31,7 +31,7 @@ const quotes = [
   "Walking on water and developing software from a specification are easy if both are frozen."
 ];
 
-function getRandomQuote() {
+const getRandomQuote =() => {
   let index;
   do {
     index = Math.floor(Math.random() * quotes.length);
@@ -40,8 +40,8 @@ function getRandomQuote() {
   return quotes[index];
 }
 
-function startGame() {
-  if (isGameRunning) {
+const startGame= () => {
+   if (isGameRunning) {
     stopGame();
   } else {
     gameSection.style.display = 'block';
@@ -52,12 +52,11 @@ function startGame() {
     resultDisplay.textContent = '';
     timerDisplay.textContent = 'Time: 0s';
     interval = setInterval(updateTimer, 1000);
-    gameButton.textContent = 'Stop Game';
     isGameRunning = true;
   }
 }
 
-function stopGame() {
+const stopGame =() => {
   clearInterval(interval);
   gameSection.style.display = 'none';
   resultDisplay.textContent = '';
@@ -66,12 +65,12 @@ function stopGame() {
   isGameRunning = false;
 }
 
-function updateTimer() {
+const updateTimer=() => {
   const elapsedTime = Math.floor((new Date() - startTime) / 1000);
   timerDisplay.textContent = `Time: ${elapsedTime}s`;
 }
 
-function checkInput() {
+const checkInput =() => {
   const typedText = inputField.value;
   const originalText = quoteDisplay.textContent;
 
@@ -84,7 +83,7 @@ function checkInput() {
   }
 }
 
-function resetGame() {
+const resetGame= () => {
   clearInterval(interval);
   gameSection.style.display = 'block';
   quoteDisplay.textContent = getRandomQuote();
@@ -94,16 +93,25 @@ function resetGame() {
   resultDisplay.textContent = '';
   timerDisplay.textContent = 'Time: 0s';
   interval = setInterval(updateTimer, 1000);
-  gameButton.textContent = 'Stop Game';
   isGameRunning = true;
 }
 
-function shareResult() {
+const shareResult =()=> {
   const resultText = resultDisplay.textContent;
   const shareMessage = encodeURIComponent(`I just finished KeySprint! ${resultText}`);
   const shareUrl = `https://twitter.com/intent/tweet?text=${shareMessage}`;
   window.open(shareUrl, '_blank');
 }
+
+// Disable copying in the input field
+inputField.addEventListener('copy', (e) => {
+  e.preventDefault();
+});
+
+// Optionally, disable copying everywhere
+ document.addEventListener('copy', (e) => {
+   e.preventDefault();
+});
 
 gameButton.addEventListener('click', startGame);
 inputField.addEventListener('input', checkInput);
